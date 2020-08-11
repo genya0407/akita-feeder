@@ -124,11 +124,11 @@ func main() {
 	yabaiHandlerBuilder := akitaHandlerBuilder{
 		TitleID:     "yabai",
 		Title:       "僕の心のヤバイやつ",
-		Link:        "https://feeds.kuminecraft.xyz",
+		Link:        "https://akita.kuminecraft.xyz/yabai",
 		Description: "「僕の心のヤバイやつ」の非公式RSSリーダーです",
 		Created:     time.Date(2020, time.November, 11, 12, 0, 0, 0, time.UTC),
 	}
-
+	http.HandleFunc("/yabai", yabaiHandlerBuilder.BuildRSSHandler())
 	http.HandleFunc("/yabai.atom", yabaiHandlerBuilder.BuildAtomHandler())
 	http.HandleFunc("/yabai.rss", yabaiHandlerBuilder.BuildRSSHandler())
 
