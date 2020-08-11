@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
@@ -117,6 +118,9 @@ func (h *akitaHandlerBuilder) BuildRSSHandler() func(w http.ResponseWriter, r *h
 }
 
 func main() {
+	port := flag.String("port", "8080", "listening port number")
+	flag.Parse()
+
 	yabaiHandlerBuilder := akitaHandlerBuilder{
 		TitleID:     "yabai",
 		Title:       "僕の心のヤバイやつ",
@@ -128,6 +132,5 @@ func main() {
 	http.HandleFunc("/yabai.atom", yabaiHandlerBuilder.BuildAtomHandler())
 	http.HandleFunc("/yabai.rss", yabaiHandlerBuilder.BuildRSSHandler())
 
-	// 8080ポートで起動
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(fmt.Sprintf(":%s", *port), nil)
 }
