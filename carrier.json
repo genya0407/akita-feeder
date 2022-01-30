@@ -1,11 +1,12 @@
 {
     "images": {
-        "web": "Dockerfile"
+        "akita_web": "Dockerfile"
     },
-    "context": "genya0407.net",
-    "tag": "v0.2",
-    "projectName": "akita-feeder",
-    "registry": "docker.genya0407.net",
+    "context": "ec2-carrier",
+    "tag": "v0.3.4",
+    "projectName": "akita",
+    "registry": "docker.genya0407.link",
+    "arch": "arm64",
     "environments": {},
-    "port": "3004"
+    "port": "80"
 }

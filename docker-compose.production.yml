@@ -1,0 +1,6 @@
+version: '3'
+services:
+  akita_web:
+    image: docker.genya0407.link/akita_akita_web:${TAG}
+    command: /go/bin/akita-feeder --port=80
+

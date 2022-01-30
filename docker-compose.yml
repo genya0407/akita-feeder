@@ -1,9 +1,12 @@
 version: '3'
 services:
-  web:
-    image: docker.genya0407.net/akita-feeder_web:${TAG}
-    command: /go/bin/akita-feeder --port=3000
-    ports:
-      - "127.0.0.1:${PORT:?err}:3000"
+  akita_web:
     restart: always
+    platform: linux/arm64
+    networks:
+      - applications
+
+networks:
+  applications:
+    external: true
 
